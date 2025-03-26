@@ -1,0 +1,78 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+/* Global Styles */
+:root {
+    --primary-color: #ff5722; /* Accent color */
+    --secondary-color: #121212; /* Dark background */
+    --tertiary-color: #ffffff; /* Light text */
+    --quaternary-color: #f1f1f1; /* Light background */
+    --max-width: 114rem;/* 1824px 1rem = 16px;*/
+  }
+
+  
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--tertiary-color);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0  3rem;
+    overflow: hidden;
+}
+
+/* Glassmorphism Effect */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styles */
+header {
+    position: fixed;
+    width: 100%;
+    padding: 20px;
+    z-index: 1000;
+}
+
+header img {
+    max-width: 100px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+/* Button Styles */
+button {
+    background-color: #ff5722; /* Accent color */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 10px;
+    }
+
+    .hero {
+        padding: 50px 10px;
+    }
+}

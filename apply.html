@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Application Form for the Alliance Program.">
+    <title>Apply Now | Alliance Program</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- Accessible Header -->
+    <header>
+        <img src="assets/images/alliance/Alli.png" alt="My Website Logo">
+        <nav aria-label="Main navigation" class="glass">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="what-we-do.html">What We Do</a>
+            <a href="alliance-program.html">Alliance Program</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="apply.html" class="cta">Apply Now</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="apply">
+            <h1>Application Form</h1>
+            <p>Please fill out the form below to apply for the Alliance Program.</p>
+            <form id="applicationForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">Company:</label>
+                    <input type="text" id="company" name="company" required>
+                </div>
+                <div class="form-group">
+                    <label for="domain">Domain:</label>
+                    <input type="text" id="domain" name="domain" required>
+                </div>
+                <div class="form-group">
+                    <label for="socialMedia">Do you use social media?</label>
+                    <select id="socialMedia" name="socialMedia">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div id="socialMediaLinks" style="display: none;">
+                    <div class="form-group">
+                        <label for="facebook">Facebook:</label>
+                        <input type="text" id="facebook" name="facebook">
+                    </div>
+                    <div class="form-group">
+                        <label for="instagram">Instagram:</label>
+                        <input type="text" id="instagram" name="instagram">
+                    </div>
+                    <div class="form-group">
+                        <label for="twitter">Twitter:</label>
+                        <input type="text" id="twitter" name="twitter">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="terms">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        I agree to the terms and conditions
+                    </label>
+                </div>
+                <button type="submit">Submit Application</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass">
+        <p>&copy; 2025 Alliance Program. All rights reserved.</p>
+    </footer>
+
+    <!-- JS Scripts -->
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
