@@ -1,0 +1,2 @@
+*.your-large-file-extension filter=lfs diff=lfs merge=lfs -text
+*.bootstrap-5.3.5 filter=lfs diff=lfs merge=lfs -text
