@@ -1,33 +1,37 @@
-// JavaScript for Dark Mode Toggle and Form Submission
-
-// Dark Mode Toggle
-const toggleSwitch = document.createElement('button');
-toggleSwitch.innerText = 'Toggle Dark Mode';
-document.body.appendChild(toggleSwitch);
-
-toggleSwitch.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
+// Add a class to the navbar when the user scrolls past a certain point
+const navEL = document.querySelector(".navbar");
+window.addEventListener("scroll", () => {
+    if (window.scrollY >= 56) {
+        navEL.classList.add("navbar-scrolled");
+    } else if (window.scrollY < 56) {
+        navEL.classList.remove("navbar-scrolled");
+    }
 });
+// Enhanced JavaScript for  Form Handling, and Animations
 
-// Form Submission Handling
-const form = document.querySelector('form'); // Assuming a form exists
-if (form) {
-    form.addEventListener('submit', (event) => {
-        event.preventDefault(); // Prevent default form submission
 
-        const formData = new FormData(form);
-        fetch('https://alliances.lerionjakenwauda.com/form-api.php', {
-            method: 'POST',
-            body: formData,
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Handle success
-            console.log('Success:', data);
-        })
-        .catch((error) => {
-            // Handle error
-            console.error('Error:', error);
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
         });
     });
-}
+});
+
+// Animation on scroll
+window.addEventListener('scroll', () => {
+    const scrollPosition = window.scrollY;
+    const sections = document.querySelectorAll('section');
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (scrollPosition > sectionTop - window.innerHeight + sectionHeight / 3) {
+            section.style.opacity = '1';
+            section.style.transform = 'translateY(0)';
+        }
+    });
+});

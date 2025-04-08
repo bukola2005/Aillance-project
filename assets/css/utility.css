@@ -1,0 +1,56 @@
+.text-primary-color{
+color: var(--primary-color);
+}
+.text-accent-color{
+color: var(--accent-color);
+}
+.text-secondary-color{
+    color: var(--secondary-color);
+}
+
+.btn-secondary-color{
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: 1rem 3.5rem;
+    margin-right: 2rem;
+    &:hover{
+        background-color: var(--secondary-color-hover);
+        transition: ease-in-out;
+    }
+
+}
+
+
+
+.btn-transparent{
+    background-color: var(--body-bg-medium);
+    color: var(--white);
+    padding: 1.2rem 3.5rem;
+    margin-right: 2rem;
+     &:hover{
+        background-color: var(--gray-500);
+        transition: ease-in-out;
+}
+}
+
+
+.accent-line{
+    padding: .5rem;
+    border-bottom: 4px solid var(--accent-color);
+    /* background-color: var(--accent-color); */
+
+}
+
+.background-Dark-Gradient{
+    background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.2);
+   border-radius: 10%;
+   padding: 1.1rem;
+   border : 1px solid var(--primary-color);
+
+
+}
+.background-light-Gradient{
+    background-color: var(--body-bg-medium);
+    border-radius: 10%;
+    border : 1px solid var(--success-color-hover);
+}
