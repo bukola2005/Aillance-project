@@ -1,0 +1,21 @@
+
+
+@media screen and (max-width: 768px) {
+    .navbar-nav{
+    background-color: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(12px); 
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom-left-radius: 10px;
+  
+    }
+    .offcanvas{
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.1); 
+        border-top-left-radius: 10px;
+    }
+    
+    .container{
+        
+    }
+}

@@ -1,0 +1,101 @@
+<!-- Accessible Header -->
+ <!-- Bootstrap Icons -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+<header class="fixed-top">   
+    <nav aria-label="Main navigation" class="navbar navbar-expand-lg py-2 py-lg-0 navbar-dark">
+      <div class="container">
+          <a href="index.html"> <img src="assets/images/alliance/Alli.png" alt="Alliance Program Logo" class="nav-logo">
+          </a>
+           <!-- Custom Toggler Button with Font Awesome -->
+          <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#navmenu" aria-label="Toggle navigation" aria-controls="navmenu">
+             
+            <svg width="48" height="48" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
+              <path d="M3.5625 6C3.5625 5.58579 3.89829 5.25 4.3125 5.25H20.3125C20.7267 5.25 21.0625 5.58579 21.0625 6C21.0625 6.41421 20.7267 6.75 20.3125 6.75L4.3125 6.75C3.89829 6.75 3.5625 6.41422 3.5625 6Z" fill="#ffffff"/>
+              <path d="M3.5625 18C3.5625 17.5858 3.89829 17.25 4.3125 17.25L20.3125 17.25C20.7267 17.25 21.0625 17.5858 21.0625 18C21.0625 18.4142 20.7267 18.75 20.3125 18.75L4.3125 18.75C3.89829 18.75 3.5625 18.4142 3.5625 18Z" fill="#ffffff"/>
+              <path d="M4.3125 11.25C3.89829 11.25 3.5625 11.5858 3.5625 12C3.5625 12.4142 3.89829 12.75 4.3125 12.75L20.3125 12.75C20.7267 12.75 21.0625 12.4142 21.0625 12C21.0625 11.5858 20.7267 11.25 20.3125 11.25L4.3125 11.25Z" fill="#ffffff"/>
+              </svg>
+                                     
+          </button>
+
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="navmenu" aria-labelledby="navmenuLabel">
+              <!-- Nav bar content -->
+              <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#navmenu" aria-label="Toggle navigation" aria-controls="navmenu">
+                  <div class="d-flex justify-content-end">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                  </div>
+              </button>
+              <ul class="navbar-nav ms-lg-auto p-4 p-lg-0">
+                  <li class="nav-item px-3 px-lg-0 py-1 py-lg-4">
+                      <a class="nav-link" href="index.html">Home</a>
+                  </li>
+
+                  <li class="nav-item  px-3 px-lg-0 py-1 py-lg-4 dropdown">
+                      <a class="nav-link d-flex align-items-center gap-1" href="../about.html" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+                        About Us <i class="bi bi-caret-down-fill ms-1"> </i>
+                     
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/about.html#about-overview">Mission</a></li>
+                        <li><a class="dropdown-item" href="#">Vision</a></li>
+                        <li><a class="dropdown-item" href="#">Values</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="nav-item px-3 px-lg-0 py-1 py-lg-4  dropdown">
+                      <a class="nav-link d-flex align-items-center gap-1" href="what-we-do.html" id="what-we-doDropdown" role="button" data-bs-toggle="dropdown">
+                        What We Do <i class="bi bi-caret-down-fill"></i>
+                     
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Introduction</a></li>
+                        <li><a class="dropdown-item" href="#">How It Works</a></li>
+                        <li><a class="dropdown-item" href="#">Eligibility</a></li>
+                      </ul>
+                    </li>
+
+
+                                              
+                  <li class="nav-item px-3 px-lg-0 py-1 py-lg-4  dropdown">
+                      <a class="nav-link d-flex align-items-center gap-1" href="alliance-program.html" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+                      Alliance Program <i class="bi bi-caret-down-fill"></i>
+                     
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Advantages</a></li>
+                        <li><a class="dropdown-item" href="#">Why Us?</a></li>
+                        <li><a class="dropdown-item" href="#">Benefit</a></li>
+                      </ul>
+                    </li>
+
+
+                    <li class="nav-item px-3 px-lg-0 py-1 py-lg-4  dropdown">
+                      <a class="nav-link d-flex align-items-center gap-1" href="/faq.html" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+                          FAQ
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/faq.html#general">General Questions</a></li>
+                        <li><a class="dropdown-item" href="/faq.html#eligibility">Eligibility</a></li>
+                        <li><a class="dropdown-item" href="/faq.html#program">Application Process</a></li>
+                      </ul>
+                    </li>
+
+
+                    <li class="nav-item px-3 px-lg-0 py-1 py-lg-4 "><a class="nav-link" href="contact.html">Contact Us</a></li>
+
+                  <li class="nav-item px-3 px-lg-0 py- py-lg-4 ">
+                      <a href="#" id="theme-toggle" class="px-3 glass icon-box border-icon-circle">
+                        <i class="fa-regular fa-sun"></i>    
+                      </a>
+                  </li>
+
+                   <li class="nav-item  px-3 px-lg-0 py-1 py-lg-4">
+                        <a class="nav-link btn btn-primary apply-now-btn" href="apply.html">Apply Now</a>
+                    </li>
+                  <!-- <li class="nav-item px-3 px-lg-0 py-1 py-lg-4 "><a class="btn btn-primary" href="apply.html">Apply Now</a></li> -->
+
+              </ul>
+          </div>
+          </div>
+      </nav>
+  </header>
