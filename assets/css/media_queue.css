@@ -1,21 +1,48 @@
-
-
-@media screen and (max-width: 768px) {
-    .navbar-nav{
-    background-color: rgba(255, 255, 255, 0.1); 
-    backdrop-filter: blur(12px); 
-    border-left: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom-left-radius: 10px;
-  
+  @media (max-width: 640px) {
+     main h1{
+    font-size: var(--font-size-4xl);
+}
+    .lead,.lead-sm{
+    font-size: var(--font-size-base);
     }
+
+    .lead-sm-inner{
+    font-size: var(--font-size-sm);
+}
+
+    #AboutHero h5{
+        font-size: var(--font-size-base);
+    }
+    #AboutHero h1{
+        font-size: var(--font-size-5xl);
+    }
+  }
+@media screen and (max-width: 768px) {
     .offcanvas{
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.1); 
-        border-top-left-radius: 10px;
+     background-color: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(12px); 
+    border: var(--border-color);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    .navbar-nav{
+        border: none;
+    }
+   
+    .contact-hero p {
+        font-size: 1.125rem;
     }
     
-    .container{
-        
+    .contact-info-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .contact-icon {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .social-links {
+        justify-content: center;
     }
 }

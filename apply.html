@@ -4,88 +4,379 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Application Form for the Alliance Program.">
-    <title>Apply Now | Alliance Program</title>
+    <meta name="description" content="A modern website showcasing our services.">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="services, modern, website, business">
+    <link rel="canonical" href="https://www.mywebsite.com">
+    <!-- Open Graph (Social Sharing) -->
+    <meta property="og:title" content="My Website – Best Services Online">
+    <meta property="og:description" content="Explore our high-quality solutions tailored to your business needs.">
+    <meta property="og:image" content="https://www.mywebsite.com/assets/images/preview.jpg">
+    <meta property="og:url" content="https://www.mywebsite.com">
+    <meta property="og:type" content="website">
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/alliance/Alli.png" type="image/x-icon">
+    <!-- Downloaded Bootstrap CSS and JavaScript libraries -->
+    <link rel="stylesheet" href="assets/css/bootstrap-5.3.5/dist/css/bootstrap.min.css">
+    <!-- css style -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- link for javascript  -->
+    <script src="assets/css/bootstrap-5.3.5/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="assets/js/apply-form.js" defer></script>
+    <script src="assets/js/script.js" defer></script>
+  <!-- simple-line-icons (for hamburger) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" integrity="sha512-QKC1UZ/ZHNgFzVKSAhV5v5j73eeL9EEN289eKAEFaAjgAiobVAnVv/AGuPbXsKl1dNoel3kNr6PYnSiTzVVBCw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Lerion Alliance Program</title>
 </head>
 
 <body>
-
     <!-- Accessible Header -->
-    <header>
-        <img src="assets/images/alliance/Alli.png" alt="My Website Logo">
-        <nav aria-label="Main navigation" class="glass">
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="what-we-do.html">What We Do</a>
-            <a href="alliance-program.html">Alliance Program</a>
-            <a href="faq.html">FAQ</a>
-            <a href="contact.html">Contact Us</a>
-            <a href="apply.html" class="cta">Apply Now</a>
-        </nav>
-    </header>
+       <!-- Load Header Here -->
+  <div id="header"></div>
 
-    <!-- Main Content -->
-    <main>
-        <section class="apply">
-            <h1>Application Form</h1>
-            <p>Please fill out the form below to apply for the Alliance Program.</p>
-            <form id="applicationForm">
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
+
+  <!-- Hero Section -->
+    <section class="pt-5 my-5">
+        <div class="container pt-5 text-center">
+            <h2 class="mb-4"><span class="text-primary">Apply</span> to Join Our Alliance Program</h2>
+            <p class="lead">Fill out the application below to begin your journey with the Lerion Jake Nwauda Digital Innovations Alliance. Our team will review your submission and contact you shortly.</p>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section class="py-5 my-5">
+        <div class="form-container glass-card">
+            <form id="applicationForm" method="POST" action="https://alliances.lerionjakenwauda.com/form-api.php">
+                <!-- Personal Information -->
+                <h2 class="text-primary pb-4">Personal Information</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName" class="form-label">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" class="form-input" required>
+                        <div class="error-message"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastName" class="form-label">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" class="form-input" required>
+                        <div class="error-message"></div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address *</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                        <div class="error-message"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" required>
+                        <div class="error-message"></div>
+                    </div>
                 </div>
+
+                <!-- Business Information -->
+                <h2>Business Information</h2>
+                
                 <div class="form-group">
-                    <label for="company">Company:</label>
-                    <input type="text" id="company" name="company" required>
+                    <label for="companyName" class="form-label">Company/Business Name *</label>
+                    <input type="text" id="companyName" name="companyName" class="form-input" required>
+                    <div class="error-message"></div>
                 </div>
-                <div class="form-group">
-                    <label for="domain">Domain:</label>
-                    <input type="text" id="domain" name="domain" required>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="industry" class="form-label">Industry/Sector *</label>
+                        <select id="industry" name="industry" class="form-select" required>
+                            <option value="">Select Industry</option>
+                            <option value="technology">Technology</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="finance">Finance & Banking</option>
+                            <option value="education">Education</option>
+                            <option value="retail">Retail & E-commerce</option>
+                            <option value="manufacturing">Manufacturing</option>
+                            <option value="services">Professional Services</option>
+                            <option value="real-estate">Real Estate</option>
+                            <option value="food-beverage">Food & Beverage</option>
+                            <option value="entertainment">Entertainment & Media</option>
+                            <option value="non-profit">Non-Profit</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="error-message"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="companySize" class="form-label">Company Size (Employees) *</label>
+                        <input type="number" id="companySize" name="companySize" class="form-input" min="1" max="10000" required>
+                        <div class="error-message"></div>
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <label for="socialMedia">Do you use social media?</label>
-                    <select id="socialMedia" name="socialMedia">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
+                    <label for="businessDescription" class="form-label">Business Description *</label>
+                    <textarea id="businessDescription" name="businessDescription" class="form-textarea" rows="4" required placeholder="Please describe your business, products/services, and target market..."></textarea>
+                    <div class="error-message"></div>
+                </div>
+
+                <!-- Website Information -->
+                <h2>Website Information</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="domainName" class="form-label">Domain Name *</label>
+                        <input type="text" id="domainName" name="domainName" class="form-input" required placeholder="yourbusiness">
+                        <div class="error-message"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tld" class="form-label">Top-Level Domain *</label>
+                        <select id="tld" name="tld" class="form-select" required>
+                            <option value=".com">.com</option>
+                            <option value=".net">.net</option>
+                            <option value=".org">.org</option>
+                            <option value=".co">.co</option>
+                            <option value=".io">.io</option>
+                            <option value=".ai">.ai</option>
+                            <option value=".ng">.ng</option>
+                            <option value=".uk">.uk</option>
+                            <option value=".ca">.ca</option>
+                            <option value=".au">.au</option>
+                        </select>
+                        <div class="error-message"></div>
+                    </div>
+                </div>
+
+                <div class="domain-preview">yourbusiness.com</div>
+
+                <div class="form-group">
+                    <label for="currentWebsite" class="form-label">Current Website (if any)</label>
+                    <input type="url" id="currentWebsite" name="currentWebsite" class="form-input" placeholder="https://www.yourcurrentwebsite.com">
+                    <div class="error-message"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="monthlyTraffic" class="form-label">Monthly Website Traffic (visitors)</label>
+                    <input type="number" id="monthlyTraffic" name="monthlyTraffic" class="form-input" min="0" placeholder="e.g., 1000">
+                    <div class="error-message"></div>
+                </div>
+
+                <!-- Social Media -->
+                <h2>Social Media Presence</h2>
+                
+                <div class="form-group">
+                    <label class="form-label">Do you use social media for your business? *</label>
+                    <div class="d-flex  mt-4">
+                        <label class="d-flex align-items-center mx-2" style=" cursor: pointer;">
+                            <input type="radio" name="socialMediaUsage" value="yes" required>
+                            <span>Yes</span>
+                        </label>
+                        <label class="d-flex align-items-center mx-2" style=" cursor: pointer;">
+                            <input type="radio" name="socialMediaUsage" value="no" required>
+                            <span>No</span>
+                        </label>
+                    </div>
+                    <div class="error-message"></div>
+                </div>
+
+                <div class="social-media-fields">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="facebook" class="form-label">Facebook Page URL</label>
+                            <input type="url" id="facebook" name="facebook" class="form-input" placeholder="https://facebook.com/yourpage">
+                            <div class="error-message"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="instagram" class="form-label">Instagram Profile</label>
+                            <input type="text" id="instagram" name="instagram" class="form-input" placeholder="@yourprofile">
+                            <div class="error-message"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="twitter" class="form-label">Twitter/X Profile</label>
+                            <input type="text" id="twitter" name="twitter" class="form-input" placeholder="@yourprofile">
+                            <div class="error-message"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="linkedin" class="form-label">LinkedIn Company Page</label>
+                            <input type="url" id="linkedin" name="linkedin" class="form-input" placeholder="https://linkedin.com/company/yourcompany">
+                            <div class="error-message"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="otherSocial" class="form-label">Other Social Media Platforms</label>
+                        <textarea id="otherSocial" name="otherSocial" class="form-textarea" rows="3" placeholder="Please list any other social media platforms you use..."></textarea>
+                        <div class="error-message"></div>
+                    </div>
+                </div>
+
+                <!-- Business Goals -->
+                <h2>Business Goals & Expectations</h2>
+                
+                <div class="form-group">
+                    <label for="primaryGoal" class="form-label">Primary Goal for Joining Alliance *</label>
+                    <select id="primaryGoal" name="primaryGoal" class="form-select" required>
+                        <option value="">Select Primary Goal</option>
+                        <option value="website-development">Website Development</option>
+                        <option value="digital-marketing">Digital Marketing</option>
+                        <option value="business-automation">Business Automation</option>
+                        <option value="ecommerce">E-commerce Development</option>
+                        <option value="brand-awareness">Brand Awareness</option>
+                        <option value="lead-generation">Lead Generation</option>
+                        <option value="customer-engagement">Customer Engagement</option>
+                        <option value="process-optimization">Process Optimization</option>
+                        <option value="other">Other</option>
                     </select>
+                    <div class="error-message"></div>
                 </div>
-                <div id="socialMediaLinks" style="display: none;">
-                    <div class="form-group">
-                        <label for="facebook">Facebook:</label>
-                        <input type="text" id="facebook" name="facebook">
-                    </div>
-                    <div class="form-group">
-                        <label for="instagram">Instagram:</label>
-                        <input type="text" id="instagram" name="instagram">
-                    </div>
-                    <div class="form-group">
-                        <label for="twitter">Twitter:</label>
-                        <input type="text" id="twitter" name="twitter">
-                    </div>
-                </div>
+
                 <div class="form-group">
-                    <label for="terms">
-                        <input type="checkbox" id="terms" name="terms" required>
-                        I agree to the terms and conditions
-                    </label>
+                    <label for="specificNeeds" class="form-label">Specific Needs or Requirements *</label>
+                    <textarea id="specificNeeds" name="specificNeeds" class="form-textarea" rows="4" required placeholder="Please describe your specific needs, challenges, and what you hope to achieve through the alliance program..."></textarea>
+                    <div class="error-message"></div>
                 </div>
-                <button type="submit">Submit Application</button>
+
+                <div class="form-group">
+                    <label for="timeline" class="form-label">Expected Timeline for Implementation</label>
+                    <select id="timeline" name="timeline" class="form-select">
+                        <option value="">Select Timeline</option>
+                        <option value="immediate">Immediate (1-2 months)</option>
+                        <option value="short-term">Short-term (3-6 months)</option>
+                        <option value="medium-term">Medium-term (6-12 months)</option>
+                        <option value="long-term">Long-term (1+ years)</option>
+                        <option value="flexible">Flexible</option>
+                    </select>
+                    <div class="error-message"></div>
+                </div>
+
+                <!-- Budget Information -->
+                <h2>Budget & Investment</h2>
+                
+                <div class="form-group">
+                    <label for="budgetRange" class="form-label">Monthly Budget Range for Digital Services</label>
+                    <select id="budgetRange" name="budgetRange" class="form-select">
+                        <option value="">Select Budget Range</option>
+                        <option value="under-500">Under $500</option>
+                        <option value="500-1000">$500 - $1,000</option>
+                        <option value="1000-2500">$1,000 - $2,500</option>
+                        <option value="2500-5000">$2,500 - $5,000</option>
+                        <option value="5000-10000">$5,000 - $10,000</option>
+                        <option value="over-10000">Over $10,000</option>
+                        <option value="flexible">Flexible/To be discussed</option>
+                    </select>
+                    <div class="error-message"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="additionalInfo" class="form-label">Additional Information</label>
+                    <textarea id="additionalInfo" name="additionalInfo" class="form-textarea" rows="4" placeholder="Any additional information you'd like to share about your business, goals, or expectations..."></textarea>
+                    <div class="error-message"></div>
+                </div>
+
+                <!-- CAPTCHA -->
+                <div class="form-group m-3">
+                    <label class="form-label">Security Verification *</label>
+                    <div class="cf-turnstile" data-sitekey="0x4AAAAAAABkMYinukE8Phz"></div>
+                    <div class="error-message"></div>
+                </div>
+
+                <!-- Terms and Conditions -->
+                <div class="form-group">
+                    <label class="d-flex p-2 align-items-center " style="cursor: pointer;">
+                        <input type="checkbox" id="termsAgreed" name="termsAgreed" required style="margin-top: 2px;">
+                        <span class="mx-2"> I agree to the <a href="#" id="termsLink" class="text-primary">Terms and Conditions</a> *</span>
+                    </label>
+                    <div class="error-message"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group mt-3">
+                    <button type="submit" class="btn btn-primary p-4" style="width: 100%; font-size: var(--font-size-lg);">
+                        Submit Application
+                    </button>
+                </div>
             </form>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <!-- Footer -->
-    <footer class="glass">
-        <p>&copy; 2025 Alliance Program. All rights reserved.</p>
-    </footer>
+    <!-- Terms and Conditions Modal -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-white-color">Terms and Conditions</h3>
+                <button id="termsClose" class="modal-close text-white-color">&times;</button>
+            </div>
+            <div class="text-white-color">
+                <h4 class="mb-2 text-secondary-color">Alliance Program Terms and Conditions</h4>
+                
+                <p><strong>1. Program Overview</strong></p>
+                <p>The Lerion Jake Nwauda Digital Innovations Alliance Program is a partnership initiative designed to provide businesses with digital solutions and support. By applying, you acknowledge that acceptance into the program is subject to review and approval.</p>
+                
+                <p><strong>2. Eligibility Requirements</strong></p>
+                <p>To be eligible for the alliance program, businesses must:</p>
+                <ul>
+                    <li>Be a legally registered business entity</li>
+                    <li>Have a clear business purpose and goals</li>
+                    <li>Demonstrate commitment to digital transformation</li>
+                    <li>Provide accurate and complete application information</li>
+                </ul>
+                
+                <p><strong>3. Program Benefits</strong></p>
+                <p>Accepted businesses will receive:</p>
+                <ul>
+                    <li>Access to digital development services</li>
+                    <li>Strategic guidance and consultation</li>
+                    <li>Technical support and maintenance</li>
+                    <li>Networking opportunities with other alliance members</li>
+                </ul>
+                
+                <p><strong>4. Responsibilities</strong></p>
+                <p>Alliance members are responsible for:</p>
+                <ul>
+                    <li>Providing accurate business information</li>
+                    <li>Maintaining active communication with the alliance team</li>
+                    <li>Following recommended digital strategies</li>
+                    <li>Providing feedback on services received</li>
+                </ul>
+                
+                <p><strong>5. Privacy and Data Protection</strong></p>
+                <p>We are committed to protecting your privacy and will handle all information provided in accordance with our privacy policy. Your business information will be used solely for program administration and service delivery.</p>
+                
+                <p><strong>6. Program Duration</strong></p>
+                <p>The alliance program is designed as a long-term partnership. Initial agreements are for 12 months, with opportunities for renewal based on mutual satisfaction and business growth.</p>
+                
+                <p><strong>7. Termination</strong></p>
+                <p>Either party may terminate the alliance agreement with 30 days written notice. Termination may also occur immediately for violations of program terms or misrepresentation of information.</p>
+                
+                <p><strong>8. Limitation of Liability</strong></p>
+                <p>Lerion Jake Nwauda Digital Innovations provides services on an "as-is" basis. While we strive for excellence, we cannot guarantee specific business outcomes or results.</p>
+                
+                <p><strong>9. Changes to Terms</strong></p>
+                <p>We reserve the right to modify these terms with 30 days notice to alliance members. Continued participation constitutes acceptance of updated terms.</p>
+                
+                <p><strong>10. Contact Information</strong></p>
+                <p>For questions about these terms or the alliance program, please contact us at info@lerionjakenwauda.com</p>
+                
+                <p class="mt-2 text-white-color" style="font-style: italic;">
+                    By checking the agreement box, you confirm that you have read, understood, and agree to these terms and conditions.
+                </p>
+            </div>
+        </div>
+    </div>
 
-    <!-- JS Scripts -->
-    <script src="assets/js/script.js"></script>
+      <!-- FOOTER -->
+     <!-- Load Footer Here -->
+  <div id="footer"></div>
+   
+<script src="/assets/js/from.js"></script>
 </body>
-
 </html>
