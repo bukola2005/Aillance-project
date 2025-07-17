@@ -44,53 +44,39 @@ function loadComponent(id, filePath) {
     }
   });
 
-
-
-
-  // ✅ FINAL DROPDOWN FIX
+  // --- Bootstrap Dropdown Arrow Icon Toggle ---
   const dropdownLinks = document.querySelectorAll('.dropdown-toggle-custom');
-
   dropdownLinks.forEach(link => {
     const arrowIcon = link.querySelector('.dropdown-icon');
-    const href = link.getAttribute('href');
-
-    // Track dropdown open state manually
-    let isOpen = false;
-
-    // Setup Bootstrap dropdown manually
-    const dropdown = new bootstrap.Dropdown(link);
-
-    link.addEventListener('click', function (e) {
-      e.preventDefault(); // always stop Bootstrap default
-
-      if (!isOpen) {
-        dropdown.show(); // first click → open
-        isOpen = true;
-      } else {
-        // second click → go to link
-        if (href && href !== '#') {
-          window.location.href = href;
-        }
-      }
-    });
-
-    // Listen for outside click to reset state
-    document.addEventListener('click', function (event) {
-      if (!link.contains(event.target)) {
-        isOpen = false;
-      }
-    });
-
-    // Handle arrow icon
-    link.addEventListener('shown.bs.dropdown', function () {
+    link.addEventListener('show.bs.dropdown', function () {
       if (arrowIcon) arrowIcon.classList.replace('bi-caret-down-fill', 'bi-caret-up-fill');
     });
-
-    link.addEventListener('hidden.bs.dropdown', function () {
+    link.addEventListener('hide.bs.dropdown', function () {
       if (arrowIcon) arrowIcon.classList.replace('bi-caret-up-fill', 'bi-caret-down-fill');
-      isOpen = false;
     });
   });
+
+  // --- Lightmode Toggle Logic ---
+  let lightmode = localStorage.getItem('lightmode');
+  const themeSwitch = document.getElementById('theme-switch');
+
+  const enableLightMode = () => {
+    document.body.classList.add('lightmode');
+    localStorage.setItem('lightmode', 'active');
+  };
+  const disableLightMode = () => {
+    document.body.classList.remove('lightmode');
+    localStorage.setItem('lightmode', null);
+  };
+
+  if (lightmode === "active") enableLightMode();
+
+  if (themeSwitch) {
+    themeSwitch.addEventListener('click', () =>  {
+      lightmode = localStorage.getItem('lightmode');
+      lightmode !== "active" ? enableLightMode() : disableLightMode();
+    });
+  }
 }
 
    })
@@ -110,22 +96,3 @@ document.addEventListener("DOMContentLoaded", function () {
     "--scroll-padding", `${navigationHeight}px`
   );
   
-
-let lightmode = localStorage.getItem('lightmode');
-const themeSwitch = document.getElementById('theme-switch');
-
-const enableLightMode = () => {
-  document.body.classList.add('lightmode');
-  localStorage.setItem('lightmode', 'active');
-};
-const disableLightMode = () => {
-  document.body.classList.remove('lightmode');
-  localStorage.setItem('lightmode', null);
-};
-
-if (lightmode === "active") enableLightMode();
-
-themeSwitch.addEventListener('click', () =>  {
-  lightmode = localStorage.getItem('lightmode');
-  lightmode !== "active" ? enableLightMode() : disableLightMode();
-});

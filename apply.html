@@ -126,8 +126,8 @@
                 <!-- Website Information -->
                 <h2>Website Information</h2>
                 
-                <div class="form-row">
-                    <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6 form-group">
                         <label for="domainName" class="form-label">Domain Name *</label>
                         <input type="text" id="domainName" name="domainName" class="form-input" required placeholder="yourbusiness">
                         <div class="error-message"></div>
@@ -285,7 +285,7 @@
                 <!-- CAPTCHA -->
                 <div class="form-group m-3">
                     <label class="form-label">Security Verification *</label>
-                    <div class="cf-turnstile" data-sitekey="0x4AAAAAAABkMYinukE8Phz"></div>
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAABlgOkwIMknCPFYT"></div>
                     <div class="error-message"></div>
                 </div>
 
@@ -376,7 +376,7 @@
       <!-- FOOTER -->
      <!-- Load Footer Here -->
   <div id="footer"></div>
-   
-<script src="/assets/js/from.js"></script>
+   <!-- Cloudflare Turnstile CAPTCHA -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>
