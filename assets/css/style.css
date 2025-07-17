@@ -39,6 +39,10 @@ ul,li{
     color: var(--white) !important;
 
 }
+select{
+    color: var(--dark-blue)!important;
+    background-color: var(--white)!important;
+}
 
 /* navbar */
 .nav-logo {
