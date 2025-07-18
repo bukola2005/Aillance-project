@@ -353,44 +353,44 @@ class FormHandler {
 
     
     // Show loading state
-    // const submitButton = this.form.querySelector('button[type="submit"]');
-    // const originalText = submitButton.textContent;
-    // submitButton.disabled = true;
-    // submitButton.innerHTML = '<span class="loading"></span> Submitting...';
+    const submitButton = this.form.querySelector('button[type="submit"]');
+    const originalText = submitButton.textContent;
+    submitButton.disabled = true;
+    submitButton.innerHTML = '<span class="loading"></span> Submitting...';
 
-    // try {
-    //   // Prepare form data
-    //   const formData = new FormData(this.form);
+    try {
+      // Prepare form data
+      const formData = new FormData(this.form);
       
-    //   // Add CAPTCHA response
-    //   const captchaResponse = this.getCaptchaResponse();
-    //   if (captchaResponse) {
-    //     formData.append('cf-turnstile-response', captchaResponse);
-    //   }
+      // Add CAPTCHA response
+      const captchaResponse = this.getCaptchaResponse();
+      if (captchaResponse) {
+        formData.append('cf-turnstile-response', captchaResponse);
+      }
 
-    //   // Submit to API
-    //   const response = await fetch(this.apiUrl, {
-    //     method: 'POST',
-    //     body: formData
-    //   });
+      // Submit to API
+      const response = await fetch(this.apiUrl, {
+        method: 'POST',
+        body: formData
+      });
 
-    //   let result;
-    //   try {
-    //     result = await response.json();
-    //   } catch (e) {
-    //     // If response is not JSON, treat as success
-    //     if (response.ok) {
-    //       this.showSuccessMessage('Application submitted successfully!');
-    //       this.form.reset();
-    //       this.initializeDomainPreview();
-    //       this.toggleSocialMediaFields(false);
-    //       return;
-    //     } else {
-    //       throw new Error('Invalid response format');
-    //     }
-    //   }
+      let result;
+      try {
+        result = await response.json();
+      } catch (e) {
+        // If response is not JSON, treat as success
+        if (response.ok) {
+          this.showSuccessMessage('Application submitted successfully!');
+          this.form.reset();
+          this.initializeDomainPreview();
+          this.toggleSocialMediaFields(false);
+          return;
+        } else {
+          throw new Error('Invalid response format');
+        }
+      }
 
-      // Get social media usage value
+    //   Get social media usage value
     const socialMediaUsage = this.form.querySelector('input[name="socialMediaUsage"]:checked')?.value;
 
     // Show appropriate message
@@ -403,26 +403,27 @@ class FormHandler {
       return;
     }
         // Reset the form
-    this.form.reset();
-    this.initializeDomainPreview();
-    this.toggleSocialMediaFields(false);
-    //   if (response.ok && result.success) {
-    //     this.showSuccessMessage(result.message || 'Application submitted successfully!');
-    //     this.form.reset();
-    //     this.initializeDomainPreview();
-    //     this.toggleSocialMediaFields(false);
-    //   } else {
-    //     this.showFormError(result.message || 'Failed to submit application. Please try again.');
-    //   }
+    // this.form.reset();
+    // this.initializeDomainPreview();
+    // this.toggleSocialMediaFields(false);
 
-    // } catch (error) {
-    //   console.error('Form submission error:', error);
-    //   this.showFormError('An error occurred while submitting your application. Please try again.');
-    // } finally {
-    //   // Reset button state
-    //   submitButton.disabled = false;
-    //   submitButton.textContent = originalText;
-    // }
+      if (response.ok && result.success) {
+        this.showSuccessMessage(result.message || 'Application submitted successfully!');
+        this.form.reset();
+        this.initializeDomainPreview();
+        this.toggleSocialMediaFields(false);
+      } else {
+        this.showFormError(result.message || 'Failed to submit application. Please try again.');
+      }
+
+    } catch (error) {
+      console.error('Form submission error:', error);
+      this.showFormError('An error occurred while submitting your application. Please try again.');
+    } finally {
+      // Reset button state
+      submitButton.disabled = false;
+      submitButton.textContent = originalText;
+    }
 
 
   }
