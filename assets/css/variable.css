@@ -11,7 +11,6 @@
     --secondary-color-hover:#A78BFA;
     --success-color-hover:#34D399;
     --error-color: #ef4444;
-    --black: #000000;
    
      /* Background Colors */
   
@@ -73,18 +72,6 @@
     --body-bg-medium: #2b1452;
     --dark-blue:#dbe6f0;
      --bg-glass:#ffffff1a;
-    --body-bg-light: ;
-    /* --body-bg-light: green; */
-    /* --white: black; */
-    /* --icon-bg: red; */
-    /* --icon-border:#334155; */
-
-     /* Text Colors */
-    /* --gray-300:#0f172a; */
-    /* --gray-500:#ffffff0d; */
-    /* --gray-400:#000; */
-    /* --light-white:#fff; */
-    /* --dark-blue: #9ca3af; */
 }
 
 
@@ -94,6 +81,7 @@
   padding:0;
   border-radius: 50%;
   background-color: var(--icon-bg);
+  border: 1px solid var(--icon-border);
   display:flex;
   justify-content: center;
   align-items: center;
@@ -109,32 +97,5 @@ display: none;
 .lightmode #theme-switch .fa-solid:last-child{
 display: block;     
 }
-/* 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --dark-blue-light: #b4b8c7;
-  }
-}
 
-html {
-  color-scheme: dark light;
-} */
-/* CSS-only solution using :has()
-   the JS version is commented out lower down */
-/* :root:has(#theme [value="☀️"]:checked) {
-  color-scheme: light;
-  --base: #cfcfcf;
-  --text: #212121;
-}
 
-:root:has(#theme [value="🌑"]:checked) {
-  color-scheme: dark;
-  --bg-primary: #b0b9cd;
-  --gray-300:#000000;
-  
-}
-
-:root:has(#theme [value="🙃"]:checked) {
-  --base: hotpink;
-  --text: dodgerblue;
-} */
