@@ -1,11 +1,17 @@
-  @media (max-width: 640px) {
-     main h1{
-    font-size: var(--font-size-4xl);
-}
-    .lead,.lead-sm{
-    font-size: var(--font-size-base);
-    }
 
+@media screen and (max-width: 768px) {
+       main h1{
+    font-size: var(--font-size-3xl);
+}
+   .card-title{
+    font-size: var(--font-size-lg);
+    }
+    .lead-sm{
+          font-size: var(--font-size-sm);
+    }
+    .card-text, .lead{
+    font-size: var( --font-size-base);
+    }
     .lead-sm-inner{
     font-size: var(--font-size-sm);
 }
@@ -14,10 +20,9 @@
         font-size: var(--font-size-base);
     }
     #AboutHero h1{
+        text-align:center ;
         font-size: var(--font-size-5xl);
     }
-  }
-@media screen and (max-width: 768px) {
     .offcanvas{
      background-color: var(--glass-border); 
     backdrop-filter: blur(12px); 
