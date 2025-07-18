@@ -203,7 +203,7 @@ select{
 /* Scroll Arrow Styles */
 .scroll-arrow {
   position: fixed;
-  font-size: var(--font-size-4xl);
+  font-size: var(--font-size-5xl);
   color: var(--white);
   z-index: 9999;
   transition: opacity var(--transition-normal);

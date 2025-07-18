@@ -1,102 +1,99 @@
 <!-- Accessible Header -->
- <!-- Bootstrap Icons -->
- <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 <body>
+<!-- Header Section -->
 <header class="fixed-top">   
-    <nav aria-label="Main navigation" class="navbar navbar-expand-lg py-1 px-3 navbar-dark">
-      <div class="container-fluid align-items-center">
-          <a href="index.html"> <img src="assets/images/alliance/Alli.png" alt="Alliance Program Logo" class="nav-logo" loading="lazy">
+  <nav aria-label="Main navigation" class="navbar navbar-expand-lg py-1 px-3 navbar-dark">
+    <div class="container-fluid align-items-center">
+      <!-- Logo -->
+      <a href="index.html">
+      <img src="assets/images/alliance/Alli.png" alt="Alliance Program Logo" class="nav-logo" loading="lazy">
+      </a>
+      <!-- Custom Toggler Button with Font Awesome -->
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#navmenu" aria-label="Toggle navigation" aria-controls="navmenu">
+       <i class="fa-solid fa-bars text-white-color"></i>
+      </button>
+
+      <!-- Offcanvas Navigation Menu -->
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="navmenu" aria-labelledby="navmenuLabel">
+        <!-- Navigation Links -->
+        <ul class="navbar-nav ms-lg-auto p-4 p-lg-0">
+        <!-- Close Button for Offcanvas -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#navmenu" aria-label="Toggle navigation" aria-controls="navmenu">
+          <div class="d-flex justify-content-end">
+          <i class="fa-solid fa-xmark text-primary"></i>
+          </div>
+        </button>
+        <!-- Home Link -->
+        <li class="nav-item px-3 px-lg-0 py-1 py-lg-4">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <!-- About Us Dropdown -->
+        <li class="nav-item  px-3 px-lg-0 py-1 py-lg-4 dropdown">
+          <a class="nav-link d-flex align-items-center gap-1 dropdown-toggle-custom" href="/about.html" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+            About Us <i class="bi bi-caret-down-fill ms-1 dropdown-icon"></i>
           </a>
-           <!-- Custom Toggler Button with Font Awesome -->
-          <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#navmenu" aria-label="Toggle navigation" aria-controls="navmenu">
-             <i class="fa-solid fa-bars text-white-color"></i>
-                                     
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/about.html#AboutHero">Mission</a></li>
+            <li><a class="dropdown-item" href="/about.html#mission">Vision</a></li>
+            <li><a class="dropdown-item" href="/about.html#values">Values</a></li>
+          </ul>
+        </li>
+        <!-- What We Do Dropdown -->
+        <li class="nav-item px-3 px-lg-0 py-1 py-lg-4  dropdown">
+          <a class="nav-link d-flex align-items-center gap-1 dropdown-toggle-custom" href="/what-we-do.html" id="what-we-doDropdown" role="button" data-bs-toggle="dropdown">
+            What We Do <i class="bi bi-caret-down-fill ms-1 dropdown-icon"></i>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/what-we-do.html#what-we-do-section">Introduction</a></li>
+            <li><a class="dropdown-item" href="/what-we-do.html#how-it-works">How It Works</a></li>
+            <li><a class="dropdown-item" href="/what-we-do.html#eligibility">Eligibility</a></li>
+          </ul>
+        </li>
+        <!-- Alliance Program Dropdown -->
+        <li class="nav-item px-3 px-lg-0 py-1 py-lg-4  dropdown">
+          <a class="nav-link d-flex align-items-center gap-1 dropdown-toggle-custom" href="alliance-program.html" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+          Alliance Program <i class="bi bi-caret-down-fill ms-1 dropdown-icon"></i>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/alliance-program.html">Advantages</a></li>
+            <li><a class="dropdown-item" href="/alliance-program.html#WhyChooseUs">Why Us?</a></li>
+            <li><a class="dropdown-item" href="/alliance-program.html#benefit">Benefit</a></li>
+          </ul>
+        </li>
+        <!-- FAQ Dropdown -->
+        <li class="nav-item px-3 px-lg-0 py-1 py-lg-4  dropdown">
+          <a class="nav-link d-flex align-items-center gap-1 dropdown-toggle-custom" href="/faq.html" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+            FAQ <i class="bi bi-caret-down-fill ms-1 dropdown-icon"></i>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/faq.html#faq-section">General Questions</a></li>
+            <li><a class="dropdown-item" href="/faq.html#eligibility">Eligibility</a></li>
+            <li><a class="dropdown-item" href="/faq.html#application">Application Process</a></li>
+            <li><a class="dropdown-item" href="/faq.html#program"> Program Details
+            </a></li>
+          </ul>
+        </li>
+        <!-- Contact Us Link -->
+        <li class="nav-item px-3 px-lg-0 py-1 py-lg-4 "><a class="nav-link" href="contact.html">Contact Us</a></li>
+        <!-- Theme Switch Button -->
+        <li class="nav-item px-3 px-lg-0 py- py-lg-4 ">
+          <button id="theme-switch">
+           <i class="fa-solid fa-sun fa-xl"></i>
+           <i class="fa-solid fa-moon fa-xl"></i> 
           </button>
-
-          <div class="offcanvas offcanvas-end" tabindex="-1" id="navmenu" aria-labelledby="navmenuLabel">
-              <!-- Nav bar content -->
-              <ul class="navbar-nav ms-lg-auto p-4 p-lg-0">
-                <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#navmenu" aria-label="Toggle navigation" aria-controls="navmenu">
-                  <div class="d-flex justify-content-end">
-                    <i class="fa-solid fa-xmark text-primary"></i>
-                  </div>
-              </button>
-                  <li class="nav-item px-3 px-lg-0 py-1 py-lg-4">
-                      <a class="nav-link" href="index.html">Home</a>
-                  </li>
-
-                  <li class="nav-item  px-3 px-lg-0 py-1 py-lg-4 dropdown">
-                      <a class="nav-link d-flex align-items-center gap-1 dropdown-toggle-custom" href="/about.html" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
-                        About Us <i class="bi bi-caret-down-fill ms-1 dropdown-icon"></i>
-                     
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/about.html#AboutHero">Mission</a></li>
-                        <li><a class="dropdown-item" href="/about.html#mission">Vision</a></li>
-                        <li><a class="dropdown-item" href="/about.html#values">Values</a></li>
-                      </ul>
-                    </li>
-
-                    <li class="nav-item px-3 px-lg-0 py-1 py-lg-4  dropdown">
-                      <a class="nav-link d-flex align-items-center gap-1 dropdown-toggle-custom" href="/what-we-do.html" id="what-we-doDropdown" role="button" data-bs-toggle="dropdown">
-                        What We Do <i class="bi bi-caret-down-fill ms-1 dropdown-icon"></i>
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/what-we-do.html#what-we-do-section">Introduction</a></li>
-                        <li><a class="dropdown-item" href="/what-we-do.html#how-it-works">How It Works</a></li>
-                        <li><a class="dropdown-item" href="/what-we-do.html#eligibility">Eligibility</a></li>
-                      </ul>
-                    </li>
-
-
-                                              
-                  <li class="nav-item px-3 px-lg-0 py-1 py-lg-4  dropdown">
-                      <a class="nav-link d-flex align-items-center gap-1 dropdown-toggle-custom" href="alliance-program.html" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
-                      Alliance Program <i class="bi bi-caret-down-fill ms-1 dropdown-icon"></i>
-                     
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/alliance-program.html">Advantages</a></li>
-                        <li><a class="dropdown-item" href="/alliance-program.html#WhyChooseUs">Why Us?</a></li>
-                        <li><a class="dropdown-item" href="/alliance-program.html#benefit">Benefit</a></li>
-                      </ul>
-                    </li>
-
-
-                    <li class="nav-item px-3 px-lg-0 py-1 py-lg-4  dropdown">
-                      <a class="nav-link d-flex align-items-center gap-1 dropdown-toggle-custom" href="/faq.html" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
-                          FAQ <i class="bi bi-caret-down-fill ms-1 dropdown-icon"></i>
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/faq.html#faq-section">General Questions</a></li>
-                        <li><a class="dropdown-item" href="/faq.html#eligibility">Eligibility</a></li>
-                        <li><a class="dropdown-item" href="/faq.html#application">Application Process</a></li>
-                        <li><a class="dropdown-item" href="/faq.html#program"> Program Details
-                        </a></li>
- 
-                      </ul>
-                    </li>
-
-
-                    <li class="nav-item px-3 px-lg-0 py-1 py-lg-4 "><a class="nav-link" href="contact.html">Contact Us</a></li>
-
-                  <li class="nav-item px-3 px-lg-0 py- py-lg-4 ">
-  
-                      <button id="theme-switch">
-                       <i class="fa-solid fa-sun fa-xl"></i>
-                       <i class="fa-solid fa-moon fa-xl"></i> 
-                      </button>
-                  </li>
-
-                   <li class="nav-item  px-3 px-lg-0 py-1 py-lg-4">
-                        <a class="nav-link btn btn-primary py-2 px-4" href="apply.html">Apply Now</a>
-                    </li>
-              </ul>
-          </div>
-          </div>
-      </nav>
+        </li>
+        <!-- Apply Now Button -->
+        <li class="nav-item  px-3 px-lg-0 py-1 py-lg-4">
+            <a class="nav-link btn btn-primary py-2 px-4" href="apply.html">Apply Now</a>
+          </li>
+        </ul>
+      </div>
+      </div>
+    </nav>
   </header>
- <!--Scroll Down Arrow (at bottom of hero) -->
+<!-- Scroll Down Arrow (at bottom of hero) -->
 <a href="/about.html" id="scrollDown" class="scroll-arrow scroll-down" aria-label="Scroll Down">
   <i class="bi bi-arrow-down-circle-fill"></i>
 </a>
