@@ -30,6 +30,52 @@
     background-color: var(--inner-card-bg);
 }
 
+
+/* paragraphs */
+.lead{
+    color: var(--gray-300);
+    opacity: 0.9;
+}
+
+.lead-sm{
+    font-size: var(--font-size-lg);
+    color:var(--gray-400);
+}
+.lead-sm-inner{
+    font-size: var(--font-size-sm);
+    color: var(--gray-400);
+}
+
+
+/* card */
+.card-title{
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--white);
+
+}
+.card-text{
+    font-size: var(--font-size-lg);
+    font-weight: 400;
+    color: var(--gray-300);
+}
+.card{
+    border-radius: .75rem;
+    border: var(--border-color);
+}
+.card:hover{
+    transition: var(--transition-slow);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--primary-color);
+}
+
+select{
+    color: var(--dark-blue)!important;
+    background-color: var(--white)!important;
+}
+
 /* buttons */
 
 .btn-secondary-color{

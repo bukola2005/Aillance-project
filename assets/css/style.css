@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 /* imported style file */
-@import url(../css/media_queue.css);
 @import url(../css/utility.css);
 @import url(../css/variable.css);
 
@@ -40,50 +39,6 @@ ul,li{
 
 }
 
-/* paragraphs */
-.lead{
-    color: var(--gray-300);
-    opacity: 0.9;
-}
-
-.lead-sm{
-    font-size: var(--font-size-lg);
-    color:var(--gray-400);
-}
-.lead-sm-inner{
-    font-size: var(--font-size-sm);
-    color: var(--gray-400);
-}
-
-
-/* card */
-.card-title{
-    font-size: var(--font-size-2xl);
-    font-weight: 700;
-    color: var(--white);
-
-}
-.card-text{
-    font-size: var(--font-size-lg);
-    font-weight: 400;
-    color: var(--gray-300);
-}
-.card{
-    border-radius: .75rem;
-    border: var(--border-color);
-}
-.card:hover{
-    transition: var(--transition-slow);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--primary-color);
-}
-
-select{
-    color: var(--dark-blue)!important;
-    background-color: var(--white)!important;
-}
 
 /* navbar */
 .nav-logo {
