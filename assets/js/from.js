@@ -1,14 +1,18 @@
 // Form handling and validation
 class FormHandler {
   constructor() {
+    // Select the form element by its ID
     this.form = document.querySelector('#applicationForm');
+    // API endpoint for form submission
     this.apiUrl = 'https://alliances.lerionjakenwauda.com/form-api.php';
     
+    // Initialize form handler if form exists
     if (this.form) {
       this.init();
     }
   }
 
+  // Initialize all form features and event listeners
   init() {
     this.setupEventListeners();
     this.initializeDomainPreview();
@@ -17,6 +21,7 @@ class FormHandler {
     this.initializeCaptcha();
   }
 
+  // Set up all event listeners for form fields and UI elements
   setupEventListeners() {
     // Form submission
     this.form.addEventListener('submit', (e) => {
@@ -24,7 +29,7 @@ class FormHandler {
       this.handleFormSubmission();
     });
 
-    // Real-time validation
+    // Real-time validation for all input, textarea, and select fields
     this.form.querySelectorAll('input, textarea, select').forEach(field => {
       field.addEventListener('blur', () => {
         this.validateField(field);
@@ -35,7 +40,7 @@ class FormHandler {
       });
     });
 
-    // Domain name and TLD inputs
+    // Domain name and TLD inputs for live preview
     const domainNameInput = this.form.querySelector('#domainName');
     const tldSelect = this.form.querySelector('#tld');
     
@@ -52,7 +57,7 @@ class FormHandler {
       });
     });
 
-    // Terms and conditions
+    // Terms and conditions modal
     const termsLink = this.form.querySelector('#termsLink');
     const termsModal = document.querySelector('#termsModal');
     const termsClose = document.querySelector('#termsClose');
@@ -419,6 +424,25 @@ class FormHandler {
 
     // Scroll to success message
     successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  }
+
+   showRejectionMessage(message) {
+    // Remove existing messages
+    this.clearFormErrors();
+    // Create and show rejection message
+    const rejectDiv = document.createElement('div');
+    rejectDiv.className = 'error';
+    rejectDiv.innerHTML = `
+      <h4>Application Not Accepted</h4>
+      <p>${message}</p>
+    `;
+    const submitButton = this.form.querySelector('button[type="submit"]');
+    if (submitButton) {
+      submitButton.parentNode.insertBefore(rejectDiv, submitButton);
+    }
+    // Scroll to message
+    rejectDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 }
 
@@ -431,3 +455,12 @@ document.addEventListener('DOMContentLoaded', () => {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = FormHandler;
 } 
+
+// Defer loading of Cloudflare Turnstile until after site has loaded
+window.addEventListener('load', function() {
+  var turnstileScript = document.createElement('script');
+  turnstileScript.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+  turnstileScript.async = true;
+  turnstileScript.defer = true;
+  document.body.appendChild(turnstileScript);
+}); 
