@@ -85,6 +85,7 @@ class FormHandler {
     }
   }
 
+  // Initialize the domain preview with a default value
   initializeDomainPreview() {
     const domainPreview = this.form.querySelector('.domain-preview');
     if (domainPreview) {
@@ -92,6 +93,7 @@ class FormHandler {
     }
   }
 
+  // Update the domain preview as the user types
   updateDomainPreview() {
     const domainName = this.form.querySelector('#domainName').value.trim();
     const tld = this.form.querySelector('#tld').value;
@@ -106,6 +108,7 @@ class FormHandler {
     }
   }
 
+  // Initialize social media toggle fields based on current selection
   initializeSocialMediaToggle() {
     const socialMediaToggle = this.form.querySelector('input[name="socialMediaUsage"]:checked');
     if (socialMediaToggle) {
@@ -116,6 +119,7 @@ class FormHandler {
     }
   }
 
+  // Show or hide social media fields
   toggleSocialMediaFields(show) {
     const socialMediaFields = this.form.querySelector('.social-media-fields');
     if (socialMediaFields) {
@@ -135,14 +139,15 @@ class FormHandler {
     }
   }
 
+  // Ensure the terms modal is hidden initially
   initializeTermsModal() {
-    // Modal is already in HTML, just ensure it's hidden initially
     const termsModal = document.querySelector('#termsModal');
     if (termsModal) {
       termsModal.classList.remove('show');
     }
   }
 
+  // Show the terms modal
   showTermsModal() {
     const termsModal = document.querySelector('#termsModal');
     if (termsModal) {
@@ -151,6 +156,7 @@ class FormHandler {
     }
   }
 
+  // Hide the terms modal
   hideTermsModal() {
     const termsModal = document.querySelector('#termsModal');
     if (termsModal) {
@@ -159,6 +165,7 @@ class FormHandler {
     }
   }
 
+  // Initialize Cloudflare Turnstile CAPTCHA
   initializeCaptcha() {
     // Wait for Cloudflare Turnstile to load
     if (typeof turnstile !== 'undefined') {
@@ -177,6 +184,7 @@ class FormHandler {
     }
   }
 
+  // Validate a single field and show error if invalid
   validateField(field) {
     const value = field.value.trim();
     const fieldName = field.name;
@@ -251,6 +259,7 @@ class FormHandler {
     return isValid;
   }
 
+  // Show or clear error message for a field
   showFieldError(field, isValid, message) {
     const errorElement = field.parentNode.querySelector('.error-message');
     
@@ -265,6 +274,7 @@ class FormHandler {
     }
   }
 
+  // Remove error styling and message from a field
   clearFieldError(field) {
     field.classList.remove('error');
     const errorElement = field.parentNode.querySelector('.error-message');
@@ -273,6 +283,7 @@ class FormHandler {
     }
   }
 
+  // Validate the entire form
   validateForm() {
     let isValid = true;
     const requiredFields = this.form.querySelectorAll('[required]');
@@ -302,6 +313,7 @@ class FormHandler {
     return isValid;
   }
 
+  // Get the CAPTCHA response token
   getCaptchaResponse() {
     // For Cloudflare Turnstile, we need to get the response token
     // The token is automatically added to the form when CAPTCHA is completed
@@ -309,6 +321,7 @@ class FormHandler {
     return turnstileResponse ? turnstileResponse.value : null;
   }
 
+  // Show a form-level error message
   showFormError(message) {
     // Remove existing error messages
     this.clearFormErrors();
@@ -324,6 +337,7 @@ class FormHandler {
     }
   }
 
+  // Remove all form-level error messages
   clearFormErrors() {
     const errorMessages = this.form.querySelectorAll('.error');
     errorMessages.forEach(error => {
@@ -333,6 +347,7 @@ class FormHandler {
     });
   }
 
+  // Handle form submission, including validation and API call
   async handleFormSubmission() {
     // Clear previous errors
     this.clearFormErrors();
@@ -428,6 +443,7 @@ class FormHandler {
 
   }
 
+  // Show a success message after form submission
   showSuccessMessage(message) {
     // Remove existing messages
     this.clearFormErrors();
@@ -456,6 +472,7 @@ class FormHandler {
 
   }
 
+  // Show a rejection message if not accepted
    showRejectionMessage(message) {
     // Remove existing messages
     this.clearFormErrors();
