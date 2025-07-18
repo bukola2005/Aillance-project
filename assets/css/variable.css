@@ -14,7 +14,7 @@
     --black: #000000;
    
      /* Background Colors */
-     /* --bg-glass:#0f172a; */
+  
     --body-bg-medium: #334155;
     --bg-primary: #0f172a;
     --inner-card-bg: #ffffff0d;
@@ -60,21 +60,31 @@
 
 .lightmode{
      /* Background Colors */
-    --body-bg-medium:#0f172a;
-    --bg-primary: #ffffff;
-     /* --bg-glass: #0f172a !important; */
-    /* --inner-card-bg:gold; */
+    --bg-primary:#ffffff;
+    --white:#2b1452;
+    --glass-border:#dbe6f0;
+    --border-color:1px solid #dbe6f0;
+    --gray-300:#6a5095;
+    --gray-400:#2b1452;
+    --secondary-color:#38BDF8;
+    --accent-color:#00b0f0;
+    --icon-bg:#f1f5f9;
+     --inner-card-bg:#f7fafc;
+    --body-bg-medium: #2b1452;
+    --dark-blue:#dbe6f0;
+     --bg-glass:#ffffff1a;
+    --body-bg-light: ;
     /* --body-bg-light: green; */
-    --white: black;
+    /* --white: black; */
     /* --icon-bg: red; */
-    --icon-border:#334155;
+    /* --icon-border:#334155; */
 
      /* Text Colors */
-    --gray-300:#0f172a;
-    --gray-500:#ffffff0d;
-    --gray-400:#000;
-    --light-white:#fff;
-    --dark-blue: #9ca3af;
+    /* --gray-300:#0f172a; */
+    /* --gray-500:#ffffff0d; */
+    /* --gray-400:#000; */
+    /* --light-white:#fff; */
+    /* --dark-blue: #9ca3af; */
 }
 
 

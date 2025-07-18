@@ -56,7 +56,7 @@ select{
 }
 
 .nav-link:hover {
-    color: var(--white) !important;
+    color: var(--primary-color-hover) !important;
 }
 
 
@@ -81,12 +81,12 @@ select{
 }
 
 .dropdown-icon {
-  transition: transform 0.3s ease;
+  transition:var(--transition-normal);
 }
 
  
 .navbar,.navbar-expand-lg{
-    transition: var( --transition-slow);
+    transition: var(--transition-slow);
     justify-content: end;
     padding: 0;
     margin: 0;
@@ -106,6 +106,7 @@ main h1{
     margin: 0 3rem;
     font-size: var(--font-size-6xl);
 }
+
 .hero-section {
     position: relative;
     min-height: 100vh;
@@ -207,7 +208,7 @@ main h1{
         color: var(--accent-color);
     }
     #Why-Join-Our-Alliance .col-md:nth-child(2) ul li span{
-        color: var(--white);
+        color: #fff;
     }
 
 
@@ -262,8 +263,8 @@ footer ul {
     background-size: cover;
     border-radius: .75rem;
 }
-#AboutHero .display-3 h5{
-    color: var(--light-white);
+#AboutHero h5,h1{
+    color: #ffff;
 }
 
 /* about overview */
@@ -274,7 +275,9 @@ footer ul {
 }
 
 /* FAQ Section */
-
+#faq-section h1{
+    color:var(--white);
+}
 .faq-item {
             margin-bottom:1.5rem;
             border: 3px solid var(--inner-card-bg);
@@ -293,12 +296,12 @@ footer ul {
         }
         
         .faq-question:hover {
-            background: var(--body-bg-medium);
+            background: var(--bg-glass);
         }
         
         .faq-question h3 {
             margin: 0;
-            color: var(--text-primary);
+            color: var(--white);
             font-size: var(--font-size-lg);
         }
         
@@ -404,7 +407,7 @@ footer ul {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--white);
 }
 
 .form-input,
@@ -493,6 +496,7 @@ footer ul {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
+  color: #fff !important;;
   backdrop-filter: blur(5px);
   z-index: var(--z-modal-backdrop);
 }
@@ -526,7 +530,6 @@ footer ul {
 .modal-title {
   font-size: var(--font-size-xl);
   font-weight: 600;
-  color: var(--text-primary);
 }
 
 .modal-close {
@@ -541,16 +544,19 @@ footer ul {
 }
 
 .modal-close:hover {
-  color: var(--text-primary);
+  color: var(--white);
   background: var(--bg-glass-light);
 }
 .modal ul{
     margin-left: 1.5rem; 
     margin-bottom:1rem;
 }
+
+ /* Application Form  */
+
 #applicationForm h2{
     margin: 3rem 0 2rem;
-     color: var(--text-primary);
+     color: var(--white);
 }
 /* CAPTCHA Styling */
 .cf-turnstile {
@@ -593,7 +599,7 @@ footer ul {
 
 
 /* Custom Contact Page Styles */
-#contactContent{
+#contactContent ,h1{
     color: var(--white);
 }
 .contact-card {
