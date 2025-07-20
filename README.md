@@ -83,9 +83,9 @@ The site was loading slowly on mobile, mostly because of large images. I compres
 ### HTTPS Mixed Content
 Had some mixed content warnings because some resources were loading over HTTP. Fixed that by updating all URLs to use HTTPS.
 
-### Trouble Connecting Frontend to PHP Backend
-Despite setting up the form and the PHP script, I was unable to get the frontend form to successfully connect to the PHP backend. The form submission kept resulting in errors, possibly due to server configuration, CORS issues, or email sending restrictions on the host. This is something I plan to revisit or troubleshoot further with server support.
 
+
+## Custom Features
 
 ## Custom Features
 

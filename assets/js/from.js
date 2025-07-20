@@ -4,7 +4,7 @@ class FormHandler {
     // Select the form element by its ID
     this.form = document.querySelector('#applicationForm');
     // API endpoint for form submission
-    this.apiUrl = 'https://alliances.lerionjakenwauda.com/form-api.php';
+    this.apiUrl = 'https://alliances.lerionjakenwauda.com/check-domain.php' ;
     
     // Initialize form handler if form exists
     if (this.form) {
@@ -40,14 +40,24 @@ class FormHandler {
       });
     });
 
-    // Domain name and TLD inputs for live preview
+     // Domain name and TLD inputs
     const domainNameInput = this.form.querySelector('#domainName');
     const tldSelect = this.form.querySelector('#tld');
     
     if (domainNameInput && tldSelect) {
-      domainNameInput.addEventListener('input', () => this.updateDomainPreview());
-      tldSelect.addEventListener('change', () => this.updateDomainPreview());
+      domainNameInput.addEventListener('input', () => this.handleDomainInput());
+      tldSelect.addEventListener('change', () => this.handleDomainInput());
+      
+      // Add debounced domain availability check
+      let domainCheckTimeout;
+      domainNameInput.addEventListener('input', () => {
+        clearTimeout(domainCheckTimeout);
+        domainCheckTimeout = setTimeout(() => {
+          this.checkDomainAvailabilityRealTime();
+        }, 1000); // Check after 1 second of no typing
+      });
     }
+
 
     // Social media usage toggle
     const socialMediaToggles = this.form.querySelectorAll('input[name="socialMediaUsage"]');
@@ -162,6 +172,94 @@ class FormHandler {
     if (termsModal) {
       termsModal.classList.remove('show');
       document.body.style.overflow = '';
+    }
+  }
+
+   // Domain availability checking with API and fallback
+  async checkDomainAvailability(domainName, tld = '.com') {
+    const fullDomain = domainName + tld;
+    
+    try {
+      // Try the real API first
+      const response = await fetch(`https://alliances.lerionjakenwauda.com/check-domain.php?domain=${encodeURIComponent(fullDomain)}`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        timeout: 5000 // 5 second timeout
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        console.log('API response:', data);
+        return data.available !== false; // Return true if available, false if unavailable
+      } else {
+        throw new Error(`API responded with status: ${response.status}`);
+      }
+    } catch (error) {
+      console.warn('API failed, using fallback:', error.message);
+      return this.checkDomainAvailabilityFallback(domainName);
+    }
+  }
+
+  // Fallback domain availability check using local JSON
+  async checkDomainAvailabilityFallback(domainName) {
+    try {
+      const response = await fetch('assets/js/domain-fallback.json');
+      const data = await response.json();
+      
+      // Check if domain is in the unavailable list
+      const isUnavailable = data.unavailable_domains.some(unavailable => 
+        domainName.toLowerCase() === unavailable.toLowerCase()
+      );
+      
+      console.log('Fallback check for', domainName, ':', !isUnavailable);
+      return !isUnavailable; // Return true if available, false if unavailable
+    } catch (error) {
+      console.error('Fallback also failed:', error);
+      // If even fallback fails, assume domain is available
+      return true;
+    }
+  }
+
+  // Real-time domain availability check
+  async checkDomainAvailabilityRealTime() {
+    const domainName = this.form.querySelector('#domainName').value.trim();
+    const tld = this.form.querySelector('#tld').value;
+    const domainPreview = this.form.querySelector('.domain-preview');
+    
+    if (!domainName) {
+      return;
+    }
+    
+    // Show checking status
+    if (domainPreview) {
+      domainPreview.textContent = `Checking ${domainName}${tld}...`;
+      domainPreview.classList.add('checking');
+    }
+    
+    try {
+      const available = await this.checkDomainAvailability(domainName, tld);
+      
+      if (domainPreview) {
+        domainPreview.classList.remove('checking');
+        if (available) {
+          domainPreview.textContent = `${domainName}${tld} - Available ✓`;
+          domainPreview.classList.add('available');
+          domainPreview.classList.remove('unavailable');
+        } else {
+          domainPreview.textContent = `${domainName}${tld} - Not Available ✗`;
+          domainPreview.classList.add('unavailable');
+          domainPreview.classList.remove('available');
+        }
+      }
+    } catch (error) {
+      console.error('Real-time domain check failed:', error);
+      if (domainPreview) {
+        domainPreview.classList.remove('checking');
+        domainPreview.textContent = `${domainName}${tld}`;
+      }
     }
   }
 
@@ -347,7 +445,7 @@ class FormHandler {
     });
   }
 
-  // Handle form submission, including validation and API call
+  // // Handle form submission, including validation and API call
   async handleFormSubmission() {
     // Clear previous errors
     this.clearFormErrors();
@@ -356,9 +454,11 @@ class FormHandler {
     if (!this.validateForm()) {
       return;
     }
-      // Check domain availability before submitting
+
+    // Check domain availability before submitting
     const domainName = this.form.querySelector('#domainName').value.trim();
-    const available = await checkDomainAvailability(domainName);
+    const tld = this.form.querySelector('#tld').value;
+    const available = await this.checkDomainAvailability(domainName, tld);
     if (!available) {
       const errorElement = this.form.querySelector('#domainName').parentNode.querySelector('.error-message');
       errorElement.textContent = 'Domain not available. Please choose another.';
@@ -366,84 +466,15 @@ class FormHandler {
       return;
     }
 
-    
-    // Show loading state
-    const submitButton = this.form.querySelector('button[type="submit"]');
-    const originalText = submitButton.textContent;
-    submitButton.disabled = true;
-    submitButton.innerHTML = '<span class="loading"></span> Submitting...';
+    // Show inline message before submitting
+    this.showSuccessMessage('Next Steps: Your application is being processed. Please wait...');
 
-    try {
-      // Prepare form data
-      const formData = new FormData(this.form);
-      
-      // Add CAPTCHA response
-      const captchaResponse = this.getCaptchaResponse();
-      if (captchaResponse) {
-        formData.append('cf-turnstile-response', captchaResponse);
-      }
-
-      // Submit to API
-      const response = await fetch(this.apiUrl, {
-        method: 'POST',
-        body: formData
-      });
-
-      let result;
-      try {
-        result = await response.json();
-      } catch (e) {
-        // If response is not JSON, treat as success
-        if (response.ok) {
-          this.showSuccessMessage('Application submitted successfully!');
-          this.form.reset();
-          this.initializeDomainPreview();
-          this.toggleSocialMediaFields(false);
-          return;
-        } else {
-          throw new Error('Invalid response format');
-        }
-      }
-
-    //   Get social media usage value
-    const socialMediaUsage = this.form.querySelector('input[name="socialMediaUsage"]:checked')?.value;
-
-    // Show appropriate message
-    if (socialMediaUsage === 'yes') {
-      this.showSuccessMessage('Congratulations! You have been accepted into the program. You will receive a confirmation email shortly.');
-    } else if (socialMediaUsage === 'no') {
-      this.showRejectionMessage('Thank you for your interest, but unfortunately you were not accepted into the program at this time.');
-    } else {
-      this.showFormError('Please answer the social media usage question.');
-      return;
-    }
-        // Reset the form
-    // this.form.reset();
-    // this.initializeDomainPreview();
-    // this.toggleSocialMediaFields(false);
-
-      if (response.ok && result.success) {
-        this.showSuccessMessage(result.message || 'Application submitted successfully!');
-        this.form.reset();
-        this.initializeDomainPreview();
-        this.toggleSocialMediaFields(false);
-      } else {
-        this.showFormError(result.message || 'Failed to submit application. Please try again.');
-      }
-
-    } catch (error) {
-      console.error('Form submission error:', error);
-      this.showFormError('An error occurred while submitting your application. Please try again.');
-    } finally {
-      // Reset button state
-      submitButton.disabled = false;
-      submitButton.textContent = originalText;
-    }
-
-
+    // Submit the form normally after a short delay
+    setTimeout(() => {
+      this.form.submit();
+    }, 2500);
   }
 
-  // Show a success message after form submission
   showSuccessMessage(message) {
     // Remove existing messages
     this.clearFormErrors();
@@ -469,11 +500,9 @@ class FormHandler {
 
     // Scroll to success message
     successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
   }
 
-  // Show a rejection message if not accepted
-   showRejectionMessage(message) {
+  showRejectionMessage(message) {
     // Remove existing messages
     this.clearFormErrors();
     // Create and show rejection message
@@ -490,17 +519,8 @@ class FormHandler {
     // Scroll to message
     rejectDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
+
 }
-
-// Initialize form handler when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-  new FormHandler();
-});
-
-// Export for use in other modules
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = FormHandler;
-} 
 
 // Defer loading of Cloudflare Turnstile until after site has loaded
 window.addEventListener('load', function() {
@@ -510,3 +530,9 @@ window.addEventListener('load', function() {
   turnstileScript.defer = true;
   document.body.appendChild(turnstileScript);
 }); 
+
+
+// Initialize form handler when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  new FormHandler();
+});

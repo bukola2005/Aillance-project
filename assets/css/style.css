@@ -453,6 +453,7 @@ footer ul {
 
 /* Domain Preview */
 .domain-preview {
+  background: var(--bg-glass-light);
   border: 1px solid var(--glass-border);
   border-radius:  0.75rem;
   padding:1rem;
@@ -461,7 +462,27 @@ footer ul {
   color: var(--text-accent);
   text-align: center;
   font-weight: 600;
+  transition: all 0.3s ease;
 }
+
+.domain-preview.checking {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  animation:  1.5s ease-in-out infinite;
+}
+
+.domain-preview.available {
+  background: linear-gradient(135deg, var(--success-color) #059669);
+  border-color: var(--success-color);
+  color: var(--white);
+}
+
+.domain-preview.unavailable {
+  background: linear-gradient(135deg, var(--error-color), #dc2626);
+  border-color: var(--error-color);
+  color: var(--white);
+}
+
+
 
 /* Social Media Fields */
 .social-media-fields {
