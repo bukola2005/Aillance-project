@@ -4,7 +4,7 @@ class FormHandler {
     // Select the form element by its ID
     this.form = document.querySelector('#applicationForm');
     // API endpoint for form submission
-    this.apiUrl = 'https://alliances.lerionjakenwauda.com/check-domain.php' ;
+    this.apiUrl = 'https://alliances.lerionjakenwauda.com/form-api.php';
     
     // Initialize form handler if form exists
     if (this.form) {
