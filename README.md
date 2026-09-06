@@ -41,6 +41,9 @@ The application form (`apply.html`) has some cool features:
 - **Real-time validation**: Get instant feedback on form fields
 - **CAPTCHA protection**: Cloudflare Turnstile keeps bots out
 
+Project Screenshot
+![Project Screenshot](./assets/images/aillance.jpg)
+
 ## Performance & Security Features
 
 ### Image Optimization
