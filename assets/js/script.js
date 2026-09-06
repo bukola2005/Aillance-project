@@ -38,14 +38,20 @@ function loadComponent(id, filePath) {
     // If loading header, initialize header-specific logic
     if (id === "header") {
     let navEL = document.querySelector("header");
-    // Add or remove navbar-scrolled class on scroll
-    window.addEventListener("scroll", () => {
-      if (window.scrollY >= 56) {
-      navEL.classList.add("navbar-scrolled");
-      } else {
-      navEL.classList.remove("navbar-scrolled");
-      }
-    });
+    // Add or remove navbar-scrolled class using IntersectionObserver for performance
+    let scrollWatcher = document.createElement('div');
+    scrollWatcher.setAttribute('data-scroll-watcher', '');
+    scrollWatcher.style.position = 'absolute';
+    scrollWatcher.style.top = '56px';
+    scrollWatcher.style.width = '1px';
+    scrollWatcher.style.height = '1px';
+    document.body.prepend(scrollWatcher);
+
+    const navObserver = new IntersectionObserver((entries) => {
+      navEL.classList.toggle("navbar-scrolled", !entries[0].isIntersecting);
+    }, { rootMargin: "0px" });
+    
+    navObserver.observe(scrollWatcher);
 
     // --- Bootstrap Dropdown Arrow Icon Toggle ---
     const dropdownLinks = document.querySelectorAll('.dropdown-toggle-custom');
@@ -90,11 +96,32 @@ function loadComponent(id, filePath) {
   .catch(error => console.error("Error loading component:", error));
 }
 
+// Set up IntersectionObserver for scroll-triggered CSS animations
+function initScrollAnimations() {
+  const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+  
+  const animationObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+  });
+
+  animatedElements.forEach(el => animationObserver.observe(el));
+}
+
 // Load header and footer on DOMContentLoaded
 document.addEventListener("DOMContentLoaded", function () {
   loadComponent("header", "./components/header.html");
   loadComponent("footer", "./components/footer.html");
+  initScrollAnimations();
 });
+
 
 // Set scroll padding to prevent navigation bar from covering content
 const navigationHeight = document.querySelector('.navbar').offsetHeight;

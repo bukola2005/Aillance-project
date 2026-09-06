@@ -144,6 +144,59 @@ main h1{
     animation: float 6s ease-in-out infinite;
 }
 
+/* Animation Initial States */
+.fade-in, .slide-in-left, .slide-in-right {
+    opacity: 0;
+}
+
+/* Animation classes triggered by IntersectionObserver */
+.fade-in.is-visible {
+    animation: fadeIn 0.6s ease-in forwards;
+    will-change: transform, opacity;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-in-left.is-visible {
+    animation: slideInLeft 0.9s ease-out forwards;
+    will-change: transform, opacity;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-in-right.is-visible {
+    animation: slideInRight 0.9s ease-out forwards;
+    will-change: transform, opacity;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 
 .element-1 {
     width: 100px;

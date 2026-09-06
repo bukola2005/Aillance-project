@@ -107,15 +107,17 @@ class FormHandler {
   updateDomainPreview() {
     const domainName = this.form.querySelector('#domainName').value.trim();
     const tld = this.form.querySelector('#tld').value;
-    const domainPreview = this.form.querySelector('.domain-preview');
     
-    if (domainPreview) {
-      if (domainName) {
-        domainPreview.textContent = `${domainName}${tld}`;
-      } else {
-        domainPreview.textContent = `yourbusiness${tld}`;
+    requestAnimationFrame(() => {
+      const domainPreview = this.form.querySelector('.domain-preview');
+      if (domainPreview) {
+        if (domainName) {
+          domainPreview.textContent = `${domainName}${tld}`;
+        } else {
+          domainPreview.textContent = `yourbusiness${tld}`;
+        }
       }
-    }
+    });
   }
 
   // Initialize social media toggle fields based on current selection
@@ -359,26 +361,33 @@ class FormHandler {
 
   // Show or clear error message for a field
   showFieldError(field, isValid, message) {
-    const errorElement = field.parentNode.querySelector('.error-message');
-    
-    if (!isValid) {
-      field.classList.add('error');
-      if (errorElement) {
-        errorElement.textContent = message;
-        errorElement.classList.add('show');
+    requestAnimationFrame(() => {
+      const errorElement = field.parentNode.querySelector('.error-message');
+      
+      if (!isValid) {
+        field.classList.add('error');
+        if (errorElement) {
+          errorElement.textContent = message;
+          errorElement.classList.add('show');
+        }
+      } else {
+        field.classList.remove('error');
+        if (errorElement) {
+          errorElement.classList.remove('show');
+        }
       }
-    } else {
-      this.clearFieldError(field);
-    }
+    });
   }
 
   // Remove error styling and message from a field
   clearFieldError(field) {
-    field.classList.remove('error');
-    const errorElement = field.parentNode.querySelector('.error-message');
-    if (errorElement) {
-      errorElement.classList.remove('show');
-    }
+    requestAnimationFrame(() => {
+      field.classList.remove('error');
+      const errorElement = field.parentNode.querySelector('.error-message');
+      if (errorElement) {
+        errorElement.classList.remove('show');
+      }
+    });
   }
 
   // Validate the entire form

@@ -39,6 +39,15 @@
       --font-size-5xl: 3rem;
       --font-size-6xl:4rem;
 
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+
   /* Glassmorphism Effects */
   --glass-border: rgba(255, 255, 255, 0.1);
   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -75,27 +84,50 @@
 }
 
 
-#theme-switch{
-  height: 50px;
-  width: 50px;
-  padding:0;
+#theme-switch {
+  height: 40px;
+  width: 40px;
+  padding: 0;
   border-radius: 50%;
-  background-color: var(--icon-bg);
+  background: var(--icon-bg);
+  backdrop-filter: var(--glass-blur);
   border: 1px solid var(--icon-border);
-  display:flex;
+  color: var(--white);
+  display: flex;
   justify-content: center;
   align-items: center;
-  top: 20px;
-  right: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-#theme-switch .fa-solid:last-child{
-display: none;
+
+#theme-switch:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--glass-shadow);
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
 }
-.lightmode #theme-switch .fa-solid:first-child{
-display: none;
+
+#theme-switch .fa-solid {
+  transition: transform 0.5s ease-in-out;
+  font-size: 1.1rem;
 }
-.lightmode #theme-switch .fa-solid:last-child{
-display: block;     
+
+#theme-switch:hover .fa-solid {
+  transform: rotate(30deg);
+}
+
+#theme-switch .fa-solid:last-child {
+  display: none;
+}
+
+.lightmode #theme-switch .fa-solid:first-child {
+  display: none;
+}
+
+.lightmode #theme-switch .fa-solid:last-child {
+  display: block;     
 }
 
 
@@ -111,11 +143,13 @@ display: block;
       --font-size-5xl: 2.2rem;
       --font-size-6xl:2.5rem;
   } 
-    .offcanvas{
-     background-color: var(--glass-border); 
-    backdrop-filter: blur(12px); 
-    border: var(--border-color);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    .offcanvas {
+        background-color: rgba(2, 6, 23, 0.95); /* Deep dark semi-transparent */
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); /* shadow-2xl */
+        z-index: 1050; /* Ensure it's above hero content */
     }
     .navbar-nav{
         border: none;
